@@ -50,3 +50,9 @@ phases:
             - while [ ! -f /var/lib/cloud/instance/boot-finished ]; do echo 'Waiting for cloud-init...'; sleep 1; done
             # Run playbook
             - ansible-playbook ${playbook_file}
+      - name: delete-playbook
+        action: ExecuteBash
+        inputs:
+          commands:
+            - set -ex
+            - rm -rf ansible-repo
